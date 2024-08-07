@@ -1,3 +1,4 @@
+
 <template>
   <ion-app>
     <ion-router-outlet></ion-router-outlet>
@@ -16,3 +17,4 @@ export default defineComponent({
   }
 });
 </script>
+

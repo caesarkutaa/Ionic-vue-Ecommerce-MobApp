@@ -19,6 +19,7 @@
                 <ion-input v-model="password" type="password" placeholder="Enter your password"></ion-input>
               </ion-item>
               <ion-button expand="full" type="submit">Login</ion-button>
+              <ion-button expand="block" @click="goToHome">Go back home</ion-button>
             </form>
           </ion-col>
         </ion-row>
@@ -27,8 +28,9 @@
   </ion-page>
 </template>
 
-<script>
+<script setup>
 import { ref } from 'vue';
+import { useRouter } from 'vue-router';
 import {
   IonPage,
   IonHeader,
@@ -44,38 +46,18 @@ import {
   IonCol
 } from '@ionic/vue';
 
-export default {
-  name: 'Login',
-  components: {
-    IonPage,
-    IonHeader,
-    IonToolbar,
-    IonTitle,
-    IonContent,
-    IonItem,
-    IonLabel,
-    IonInput,
-    IonButton,
-    IonGrid,
-    IonRow,
-    IonCol
-  },
-  setup() {
-    const email = ref('');
-    const password = ref('');
+const email = ref('');
+const password = ref('');
+const router = useRouter();
 
-    const login = () => {
-      // Add your login logic here
-      console.log('Email:', email.value);
-      console.log('Password:', password.value);
-    };
+const login = () => {
+  // Add your login logic here
+  console.log('Email:', email.value);
+  console.log('Password:', password.value);
+};
 
-    return {
-      email,
-      password,
-      login
-    };
-  }
+const goToHome = () => {
+  router.push('/');
 };
 </script>
 
