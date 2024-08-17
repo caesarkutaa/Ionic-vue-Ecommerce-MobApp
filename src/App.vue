@@ -8,12 +8,14 @@
 <script>
 import { defineComponent } from 'vue';
 import { IonApp, IonRouterOutlet } from '@ionic/vue';
+import { createPinia, PiniaVuePlugin } from 'pinia';
 
 export default defineComponent({
   name: 'App',
   components: {
     IonApp,
-    IonRouterOutlet
+    IonRouterOutlet,
+    createPinia, PiniaVuePlugin
   }
 });
 </script>
