@@ -28,7 +28,7 @@ import { useAuthStore } from './stores/authstores';
 // Create Pinia instance
 const pinia = createPinia();
 
-// Axios default configuration
+// Axios defau slt configuration
 axios.defaults.baseURL = 'https://e-commerce-api-kufk.onrender.com/api/v1/';
 
 // Register icons
