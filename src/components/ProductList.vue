@@ -1,6 +1,6 @@
 <template>
   <ion-page>
-    <ion-content>
+    <ion-content class="product-content">
       <div class="product-list">
         <!-- Show a loading message while products are being fetched -->
         <div v-if="loading" class="loading">Loading products...</div>
@@ -22,19 +22,13 @@
 
 <script setup>
 import { computed, onMounted } from 'vue';
-import { useProductStore } from '../stores/productStore'; // Ensure this path is correct
-import { useCartStore } from '../stores/cartStores'; // Ensure this path is correct
+import { useProductStore } from '../stores/productStore';
+import { useCartStore } from '../stores/cartStores';
 import {
   IonPage,
   IonContent,
   IonButton,
-  IonHeader,
-  IonToolbar,
-  IonTitle,
 } from '@ionic/vue';
-
-
-
 
 // Access the Pinia stores
 const productStore = useProductStore();
@@ -63,6 +57,10 @@ const addToCart = async (product) => {
 </script>
 
 <style scoped>
+.product-content {
+  padding-bottom: 100px; /* Increase the bottom padding to ensure content is above the footer */
+}
+
 .product-list {
   display: flex;
   flex-direction: column;
@@ -129,3 +127,4 @@ const addToCart = async (product) => {
   margin-top: 20px;
 }
 </style>
+

@@ -19,6 +19,7 @@ export const useCartStore = defineStore('cart', {
       if (!authStore.token) {
         this.error = 'User is not authenticated';
         return;
+        console.log(this.error)
       }
 
       try {
@@ -88,30 +89,35 @@ export const useCartStore = defineStore('cart', {
         this.loading = true;
     
         // Send delete request to the server
-        await axios.delete(`/cart/delete/${productId}`, {
+        const response = await axios.delete(`/cart/delete/${productId}`, {
           params: { quantity },
           headers: {
             Authorization: `Bearer ${authStore.token}`,
           },
         });
     
-        // Fetch the latest cart data from the server after removal
-        await this.fetchCart();
+        if (response.status === 200) {
+          // Fetch the latest cart data from the server after removal
+          await this.fetchCart();
     
-        // Show success message
-        const toast = await toastController.create({
-          message: 'Product removed successfully!',
-          duration: 2000,
-          color: 'success',
-        });
-        toast.present();
+          // Show success message
+          const toast = await toastController.create({
+            message: 'Product removed successfully!',
+            duration: 2000,
+            color: 'success',
+          });
+          toast.present();
+        } else {
+          throw new Error('Failed to remove product from cart');
+        }
       } catch (error) {
         console.error('Error removing from cart:', error);
         this.error = error.response?.data?.message || 'Failed to remove from cart';
       } finally {
         this.loading = false;
       }
-    },
+    }
+    
     
   
   },

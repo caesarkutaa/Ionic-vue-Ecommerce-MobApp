@@ -9,8 +9,10 @@
           <ion-button v-if="isLoggedIn" @click="goToProfile" class="user-name-button">
             {{ userFirstName }}
           </ion-button>
-          <ion-button v-else href="/login">
-            <ion-icon name="person-circle-outline" class="dark-icon"></ion-icon>
+          <ion-button v-else>
+            <router-link to="/login">
+              <ion-icon name="person-circle-outline" class="dark-icon"></ion-icon>
+            </router-link>
           </ion-button>
         </ion-buttons>
         <ion-title></ion-title>
@@ -21,17 +23,17 @@
 
     <ion-footer>
       <ion-tab-bar slot="bottom">
-        <ion-tab-button tab="home" href="/">
+        <ion-tab-button tab="home" @click="goToHome">
           <ion-icon name="home-outline"></ion-icon> <!-- Updated to home logo -->
           <ion-label>Home</ion-label>
         </ion-tab-button>
-        <ion-tab-button tab="category" href="/category">
-          <ion-icon name="list-outline"></ion-icon> <!-- Updated to category icon -->
-          <ion-label>Categories</ion-label>
+      <ion-tab-button tab="category" href="/category">
+            <ion-icon name="list-outline"></ion-icon> <!-- Updated to category icon -->
+            <ion-label>Categories</ion-label>
         </ion-tab-button>
-        <ion-tab-button tab="cart" href="/cart">
-          <ion-icon name="cart-outline"></ion-icon>
-          <ion-label>Cart</ion-label>
+          <ion-tab-button tab="cart" href="/cart">
+            <ion-icon name="cart-outline"></ion-icon>
+            <ion-label>Cart</ion-label>
         </ion-tab-button>
       </ion-tab-bar>
     </ion-footer>
@@ -40,14 +42,13 @@
 
 <script setup>
 import { computed } from 'vue';
-import { useRouter } from 'vue-router';
+import { useRouter, useRoute } from 'vue-router';
 import { useAuthStore } from '../stores/authstores';
 import {
   IonPage,
   IonHeader,
   IonToolbar,
   IonTitle,
-  IonContent,
   IonFooter,
   IonTabBar,
   IonTabButton,
@@ -60,6 +61,7 @@ import {
 } from '@ionic/vue';
 
 const router = useRouter();
+const route = useRoute();
 const authStore = useAuthStore();
 
 const isLoggedIn = computed(() => !!authStore.token);
@@ -67,6 +69,13 @@ const userFirstName = computed(() => authStore.user ? authStore.user.firstname :
 
 const goToProfile = () => {
   router.push('/profile');
+};
+
+// Navigate to the home page, but only if not already on it
+const goToHome = () => {
+  if (route.path !== '/') {
+    router.push('/');
+  }
 };
 </script>
 
@@ -96,7 +105,6 @@ ion-button {
 
 ion-footer {
   --background: #f8f8f8;
-  
 }
 
 ion-tab-bar {

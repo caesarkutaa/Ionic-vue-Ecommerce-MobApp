@@ -29,7 +29,7 @@ import { useAuthStore } from './stores/authstores';
 const pinia = createPinia();
 
 // Axios default configuration
-axios.defaults.baseURL = 'https://e-commerce-api-kufk.onrender.com/api/v1';
+axios.defaults.baseURL = 'https://e-commerce-api-kufk.onrender.com/api/v1/';
 
 // Register icons
 addIcons({

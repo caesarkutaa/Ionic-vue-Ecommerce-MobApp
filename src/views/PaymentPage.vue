@@ -38,12 +38,12 @@
         <!-- Payment Details Section -->
         <div class="payment-details">
           <ion-item>
-            <ion-label position="floating">Amount Paid</ion-label>
+            <ion-label position="floating"></ion-label>
             <ion-input v-model="paymentAmount" type="number" placeholder="Enter amount"></ion-input>
           </ion-item>
 
           <ion-item>
-            <ion-label position="floating">Note</ion-label>
+            <ion-label position="floating"></ion-label>
             <ion-textarea v-model="paymentNote" placeholder="Enter payment note"></ion-textarea>
           </ion-item>
 
