@@ -1,6 +1,6 @@
 # E-Commerce App
 
-This is an E-Commerce application built using Ionic and Vue for the frontend, and Node.js with MongoDB for the backend. The application allows users to browse products, add items to their cart, and manage their cart.
+This is an E-Commerce application built using Ionic and Vue for the frontend, and Node.js with MongoDB for the backend. The application allows users to browse products, add items to their cart, manage their cart and make payment using cryptocurrunency.
 
 ## Table of Contents
 
@@ -20,6 +20,7 @@ This is an E-Commerce application built using Ionic and Vue for the frontend, an
 - Remove Products from Cart
 - View Cart
 - Checkout Process
+- Cryptocurrency Payment
 
 ## Technologies Used
 
